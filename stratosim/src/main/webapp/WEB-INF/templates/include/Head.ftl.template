@@ -1,0 +1,15 @@
+<#assign VERSION={{ app_version }}>
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>StratoSim - Online Schematic Capture and Spice Simulation</title>
+	<meta name="description" content="" />
+	<meta name="author" content="StratoSim" />
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/${VERSION}/css/style.css" />
+
+

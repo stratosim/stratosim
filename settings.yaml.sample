@@ -1,0 +1,17 @@
+defaults:
+  app_name: 
+  app_version: 
+
+  janrain_url: 
+  janrain_api_key: 
+  
+  worker_client_key: 
+  cookie_token_salt: 
+  cookie_encrypt_key: 
+
+dev:
+  worker_url: http://127.0.0.1:8080/worker/
+
+prod:
+  worker_url: 
+

@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+
+<title>StratoSim - ${name?html}</title>
+
+<style>
+html,body {padding:0px;margin:0px;width:100%;position:relative;background-color:white;}
+body {padding-top:30px;}
+#img {width:100%}
+#charts {width:100%;}
+.links {position:fixed;top:2px;left:5px;width:120px;font-family:arial;}
+.link {font-size:20px;text-shadow:3px 3px 3px #111111;text-decoration:none;} 
+.link,.link:link,.link:visited,.link:active {color: #dddddd;} 
+#menu {border:1px solid black;margin-top:2px;background:white;}
+.link:hover {color: #66ccff;} 
+.linkd {font-size:13px;text-decoration:none;display:block;width:100%;padding-left: 5px;} 
+.linkd,.linkd:link,.linkd:visited,.link:active {color: #0066cc;} 
+.linkd:hover {color: #66ccff;}
+svg {width:100%;height:100%}
+</style>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  google.setOnLoadCallback(initialize);
+
+  var MARGIN = 3;
+  
+  var GRAPH_LINE_WIDTH = 2;
+  var GRAPH_POINT_SIZE = 0;
+  
+  var circuitHeight = 100;
+  var chartHeight = 100;
+
+  var xmlhttp = new XMLHttpRequest();
+
+  function initialize() {
+    if (document.getElementById('charts').offsetWidth == 0) {
+      setTimeout(function() { initialize(); }, 100);
+      return;
+    } else {
+  
+      sizeArea();
+      document.getElementById('menu').offsetHeight = (1 + ${menuItems}) * 16;
+      
+      <#if datasourceUrl??>      
+      if (chartHeight > 0) {
+        var opts = {sendMethod: 'xhr'};
+        var query = new google.visualization.Query("${datasourceUrl}", opts);
+        query.send(handleQueryResponse);
+      }
+      </#if>
+    
+      <#if svgUrl??>
+      if (circuitHeight > 0) {
+        xmlhttp.onreadystatechange = drawCircuit;
+        xmlhttp.open("GET","${svgUrl}",true);
+        xmlhttp.send();
+      }
+      </#if>
+    }
+  }
+  
+  function getUrlParameter(k)
+  {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        if (hash.length == 2) {
+          vars[hash[0]] = hash[1];
+        } else {
+          vars[hash[0]] = "true";
+        }
+    }
+    return vars[k];
+  }
+
+  function sizeArea() {
+    circuitHeight = getUrlParameter("circuitHeight");
+    if (isNaN(circuitHeight) || circuitHeight < 0) {
+      circuitHeight = 0;
+    }
+
+    document.getElementById("img").style.height = circuitHeight + "px";
+
+    chartHeight = getUrlParameter("chartHeight");
+    if (isNaN(chartHeight) || chartHeight < 0) {
+      chartHeight = 0;
+    }
+  }
+
+  function handleQueryResponse(response) {
+    if (response.isError()) {
+      
+    }
+
+    drawCharts(response.getDataTable());
+  }
+  
+  function drawCircuit() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("img").innerHTML = xmlhttp.responseText;
+    } else {
+      
+    }
+  }
+
+  function drawCharts(table) {
+    var xTitle = table.getColumnProperty(0, "dimension");
+
+    var chartTypes = new Array();
+    for (var i = 1; i < table.getNumberOfColumns(); i++) {
+      if (getUrlParameter(table.getColumnProperty(i, "group")) == "true" ||
+          getUrlParameter("showAll") == "true") {
+        key = table.getColumnProperty(i, "group") + "|" + table.getColumnProperty(i, "dimension");
+        if (chartTypes[key] == undefined) {
+          chartTypes[key] = new Array();
+        }
+        chartTypes[key].push(i);
+      }
+    }
+
+    var i = 0;
+    var width = (document.getElementById('charts').offsetWidth - 2 * MARGIN);
+
+    for (var yTitle in chartTypes) {
+      var columns = chartTypes[yTitle];
+
+      var view = new google.visualization.DataView(table);
+
+      var colorList = Array();
+      for (var c in columns) {
+        colorList.push(table.getColumnProperty(columns[c], "color"));
+      }
+
+      var opt = {"width" : width,
+                 "height" : chartHeight,
+                 "lineWidth" : GRAPH_LINE_WIDTH,
+                 "pointSize" : GRAPH_POINT_SIZE,
+                 "colors" : colorList,
+                 "hAxis" : {title: xTitle},
+                 "vAxis" : {title : yTitle.substring(yTitle.indexOf("|") + 1)},
+                 "legend" : "right"
+                };
+
+      var dataSet = [0].concat(columns);
+
+      view.setColumns(dataSet);
+
+      var chartdiv = document.createElement("div");
+      document.getElementById('charts').appendChild(chartdiv);
+      var chart = new google.visualization.ScatterChart(chartdiv);
+      chart.draw(view, opt);
+
+      i++;
+    }
+
+  }
+  
+  function openMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display = "block";
+  }
+  
+  function closeMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display = "none";
+  }
+</script>
+
+</head>
+<body>
+
+<div id="img">
+</div>
+
+<div id="charts" >
+</div>
+
+<div class="links" onmouseover="openMenu();" onmouseout="closeMenu();">
+<a class="link" target="_blank" href="${linkUrl}">
+StratoSim
+</a>
+
+<div id="menu" style="display: none;">
+<a class="linkd" target="_blank" href="${linkUrl}">
+Launch Simulator
+</a>
+
+<#if pdfUrl??>
+<a class="linkd" target="_blank" href="${pdfUrl}">
+Schematic PDF
+</a>
+</#if>
+<#if pngUrl??>
+<a class="linkd" target="_blank" href="${pngUrl}">
+Schematic PNG
+</a>
+</#if>
+<#if svgUrl??>
+<a class="linkd" target="_blank" href="${svgUrl}">
+Schematic SVG
+</a>
+</#if>
+
+<#if simulationpdfUrl??>
+<a class="linkd" target="_blank" href="${simulationpdfUrl}">
+Graphs PDF
+</a>
+</#if>
+<#if simulationpngUrl??>
+<a class="linkd" target="_blank" href="${simulationpngUrl}">
+Graphs PNG
+</a>
+</#if>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <!-- The parameter is how many to add each time -->
+    <url>/c/whitelist-cron-servlet/4</url>
+    <description>Fetch new sign ups and add to the whitelist.</description>
+    <schedule>every 5 minutes</schedule>
+  </cron>
+</cronentries>

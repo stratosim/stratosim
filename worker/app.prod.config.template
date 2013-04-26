@@ -1,0 +1,5 @@
+[stratosim]
+use_client_key: True
+client_key: '{{ worker_client_key }}'
+timeout_s: 30
+tmp_dir: '/home/ec2-user/tmp/'

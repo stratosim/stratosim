@@ -1,0 +1,23 @@
+package proto;
+
+option java_package = "com.stratosim.shared.model.util.proto";
+option java_multiple_files = true;
+
+message VersionId {
+	enum Version {
+		v2012_01_22_PRE_ALPHA = 1;
+	}
+	optional Version version = 1 [default = v2012_01_22_PRE_ALPHA];
+}
+
+message Point {
+	optional int32 x = 1;
+	optional int32 y = 2;
+}
+
+message AffineTransform {
+	optional double d11 = 1;
+	optional double d12 = 2;
+	optional double d21 = 3;
+	optional double d22 = 4;
+}

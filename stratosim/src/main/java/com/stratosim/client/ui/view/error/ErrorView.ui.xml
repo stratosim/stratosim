@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+ 
+ <ui:style>
+   .errorDiv {
+	   width: 22em;
+	   position: absolute;
+	   left: 50%;
+	   margin-left: -11em;
+	   color: red;
+	   background-color: white;
+	   border: 1px solid red;
+	   padding: 4px;
+	   font-family: sans-serif
+   }
+ </ui:style>
+ 
+ <g:HTMLPanel>
+   <div class="{style.errorDiv}">
+     <g:Label ui:field="errorMessageLabel"/>
+   </div>
+ </g:HTMLPanel>
+
+</ui:UiBinder>

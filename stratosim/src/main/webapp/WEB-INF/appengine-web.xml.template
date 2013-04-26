@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+  <application>{{ app_name }}</application>
+  <version>${appengine.app.version}</version>
+
+  <threadsafe>true</threadsafe>
+  <precompilation-enabled>true</precompilation-enabled>
+
+  <!-- Configure serving/caching of GWT files -->
+  <static-files>
+    <include path="stratosim/**" />
+    <include path="favicon.ico" expiration="5m" />
+    <include path="robots.txt" />
+
+    <include path="/{{ app_version }}/**" expiration="364d" />
+
+    <include path="**.nocache.*" expiration="0s" />
+
+    <include path="**.cache.*" expiration="364d" />
+    <exclude path="**.gwt.rpc" />
+  </static-files>
+
+  <!-- Configure java.util.logging -->
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+  </system-properties>
+
+  <!-- Administrative pages -->
+  <admin-console>
+    <page name="Health Check" url="/a/h" />
+    <page name="Worker Check" url="/a/worker-check" />
+    <page name="Add to Whitelist" url="/a/add-to-whitelist" />
+    <page name="Set Permissions" url="/a/set-permissions" />
+    <page name="Show Permissions" url="/a/show-permissions" />
+    <page name="Make Public" url="/a/make-public" />
+    <page name="List Versions" url="/a/list-versions" />
+    <page name="Appstats" url="/a/appstats" />
+  </admin-console>
+
+</appengine-web-app>

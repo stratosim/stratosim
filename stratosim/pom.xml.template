@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.stratosim</groupId>
+  <artifactId>stratosim</artifactId>
+  <version>0.1</version>
+  <packaging>war</packaging>
+
+  <name>stratosim</name>
+
+  <properties>
+    <appengine.app.version>{{ app_version }}</appengine.app.version>
+    <appengine.target.version>1.7.6</appengine.target.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- GWT version -->
+    <gwt.version>2.5.1</gwt.version>
+    <!-- Produce detailed JS during GWT compilation for development environment -->
+    <gwt.style>DETAILED</gwt.style>
+
+    <!-- This is just for "eclipse:eclipse" goal to always attempt downloading sources -->
+    <downloadSources>true</downloadSources>
+  </properties>
+
+  <repositories>
+    <!-- For google-api-java-client.
+         http://code.google.com/p/google-api-java-client/wiki/APIs
+         - Josh, 2012-12-25 -->
+    <repository>
+      <id>google-api-services</id>
+      <url>http://google-api-client-libraries.appspot.com/mavenrepo</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+
+    <!-- Appengine dependencies. see:
+        https://code.google.com/p/appengine-maven-plugin/
+        -->
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-1.0-sdk</artifactId>
+      <version>${appengine.target.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+    <!-- GWT dependencies -->
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>${gwt.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwt.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- TODO(josh): can this be deleted? -->
+    <!-- J2EE Servlet API. We need it to compile IndexServlet class. You can probably remove
+      it, if you don't explicitly use Servlets -->
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-servlet_2.5_spec</artifactId>
+      <version>1.2</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- These dependencies are here just for enabling logging -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>0.9.24</version>
+    </dependency>
+
+    <!-- Stratosim dependencies. Listed here rather than putting JARs
+         in WEB-INF/lib. -->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.6</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>14.0-rc1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava-gwt</artifactId>
+      <version>14.0-rc1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>2.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker-gae</artifactId>
+      <version>2.3.19</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>3.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.api-client</groupId>
+      <artifactId>google-api-client</artifactId>
+      <version>1.9.0-beta</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client</artifactId>
+      <version>1.9.0-beta</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.oauth-client</groupId>
+      <artifactId>google-oauth-client</artifactId>
+      <version>1.9.0-beta</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt.google-apis</groupId>
+      <artifactId>gwt-visualization</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.visualization</groupId>
+      <artifactId>visualization-datasource</artifactId>
+      <version>1.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-drive</artifactId>
+      <version>v1-rev4-java-1.6.0-beta</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-oauth2</artifactId>
+      <version>v2-rev8-java-1.6.0-beta</version>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.jsr107cache</groupId>
+      <artifactId>jsr107cache</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-jsr107cache</artifactId>
+      <version>${appengine.target.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.objectify</groupId>
+      <artifactId>objectify</artifactId>
+      <version>4.0b1</version>
+    </dependency>
+
+    <!-- Testing libraries -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>3.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.9.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-labs</artifactId>
+      <version>${appengine.target.version}</version>
+      <!-- Scoping this in test causes a null pointer exception in /a/appstats. see:
+        https://groups.google.com/d/topic/google-appengine-java/fQDiY4Kow7k/discussion -->
+      <!--<scope>test</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-api-stubs</artifactId>
+      <version>${appengine.target.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.appengine</groupId>
+      <artifactId>appengine-testing</artifactId>
+      <version>${appengine.target.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwt.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+
+  <build>
+    <plugins>
+      <!-- protobuf java source generation.
+
+        the google plugin was never merged into the main protobuf repo.
+        http://code.google.com/p/protobuf/issues/detail?id=81#c20
+        
+        the first plugin below runs a script to generate the sources, and
+        the second adds the generated sources to the maven build. see:
+        http://stackoverflow.com/questions/1578456/integrate-protocol-buffers-into-maven2-build
+      -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <executions>
+          <execution>
+            <id>invoke-protoc</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <executable>${basedir}/src/main/proto/generate-sources</executable>
+          <workingDirectory>${basedir}</workingDirectory>
+          <arguments>
+            <argument>src/main/proto</argument>
+            <argument>target/generated-proto-sources</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                  <source>target/generated-proto-sources</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Java compiler version -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.google.appengine</groupId>
+        <artifactId>appengine-maven-plugin</artifactId>
+        <version>${appengine.target.version}</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <archiveClasses>true</archiveClasses>
+          <webResources>
+            <!-- in order to interpolate version from pom into appengine-web.xml -->
+            <resource>
+              <directory>${basedir}/src/main/webapp/WEB-INF</directory>
+              <filtering>true</filtering>
+              <targetPath>WEB-INF</targetPath>
+            </resource>
+            <resource>
+              <directory>${basedir}/src/main/webapp/static</directory>
+              <filtering>true</filtering>
+              <targetPath>{{ app_version }}</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    
+      <!-- Maven GWT plugin (ex. http://gwt-maven.googlecode.com/svn/docs/maven-googlewebtoolkit2-plugin/index.html)
+        http://mojo.codehaus.org/gwt-maven-plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>${gwt.version}</version>
+        <configuration>
+          <logLevel>INFO</logLevel>
+
+          <!-- match -Dgae.port -->
+          <port>${gae.port}</port>
+
+          <!-- This must point to your GWT modules! -->
+          <compileTargets>
+            <value>com.stratosim.StratoSim</value>
+          </compileTargets>
+
+          <!-- This is for generating Asynch interfaces -->
+          <!-- <servicePattern>**/client/*Service.java</servicePattern> -->
+
+          <extraJvmArgs>-Xmx512m</extraJvmArgs>
+          <!--<jvm>${JAVA_HOME}/bin/java</jvm> -->
+          <!--<noServer>false</noServer> -->
+
+          <!-- TODO This should help running GAE stuff in hosted mode (when gwt-maven-plugin-1.2
+            is released, see http://jira.codehaus.org/browse/MGWT-112) -->
+          <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+
+          <runTarget>/</runTarget>
+          <style>DETAILED</style>
+          <webXml>war/WEB-INF/web.xml</webXml>
+          <!-- this parameter is VERY important with automatic mode - has to match the version
+            in your declared deps -->
+          <!-- if this is set incorrect (not a match), or left out (default is 1.5.2 for 2.0-beta23)
+            you will have mysterious errors -->
+          <gwtVersion>${gwt.version}</gwtVersion>
+        </configuration>
+        <executions>
+          <!-- <execution> <id>generateAsynch</id> <phase>generate-sources</phase> <goals>
+            <goal>generateAsync</goal> </goals> </execution> -->
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+          	<id>gwtTest</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:stratosim-widget="urn:import:com.stratosim.client.ui.widget">
+
+	<ui:style>
+		.image {
+			width: 200px;
+			height: 150px;
+			margin-left: 150px;
+			border: 1px solid black;
+		}
+		
+		.label {
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+		}
+		
+		.done {
+			width: 70px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 710px;
+		}
+	</ui:style>
+
+	<g:DockLayoutPanel>
+		<g:center>
+			<g:DockLayoutPanel>
+				<g:west size="300">
+					<stratosim-widget:GridList ui:field="grid"
+						columns="1">
+					</stratosim-widget:GridList>
+				</g:west>
+				<g:north size="15">
+					<g:Label addStyleNames="{style.label}" ui:field="nameLabel"></g:Label>
+				</g:north>
+				<g:north size="30">
+					<g:Label addStyleNames="{style.label}" ui:field="dateLabel"></g:Label>
+				</g:north>
+				<g:north size="200">
+					<g:Image addStyleNames="{style.image}" ui:field="thumbnailImage"></g:Image>
+				</g:north>
+			</g:DockLayoutPanel>
+		</g:center>
+		<g:south size="45">
+			<g:PushButton ui:field="doneButton" addStyleNames="{style.done}">Open</g:PushButton>
+		</g:south>
+	</g:DockLayoutPanel>
+
+</ui:UiBinder> 

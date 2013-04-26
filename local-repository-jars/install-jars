@@ -1,0 +1,25 @@
+#!/bin/bash
+
+JAR_DIR="$(dirname $0)"
+
+mvn install:install-file \
+  -Dpackaging=jar \
+  -DgroupId=com.google.apis \
+  -DartifactId=google-api-services-oauth2 \
+  -Dversion=v2-rev8-java-1.6.0-beta \
+  -Dfile="$JAR_DIR"/google-api-oauth2-v2-rev8-java-1.6.0-beta.jar
+
+mvn install:install-file \
+  -Dpackaging=jar \
+  -DgroupId=com.google.apis \
+  -DartifactId=google-api-services-drive \
+  -Dversion=v1-rev4-java-1.6.0-beta \
+  -Dfile="$JAR_DIR"/google-api-drive-v1-rev4-java-1.6.0-beta.jar
+
+mvn install:install-file \
+  -Dpackaging=jar \
+  -DgroupId=com.google.gwt.google-apis \
+  -DartifactId=gwt-visualization \
+  -Dversion=1.1.2 \
+  -Dfile="$JAR_DIR"/gwt-visualization-1.1.2.jar
+

@@ -1,0 +1,2 @@
+${username?html} has shared ${title?html} using StratoSim.
+You can view and simulate the schematic online using StratoSim at ${link}.

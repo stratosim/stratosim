@@ -1,0 +1,2 @@
+These JARs aren't available in a central maven repository so we need to manually install them in the local repository. Run ./install-jars to install them.
+

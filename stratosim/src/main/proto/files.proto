@@ -1,0 +1,49 @@
+package proto;
+
+import "circuit_objects.proto";
+import "util.proto";
+
+option java_package = "com.stratosim.shared.model.circuit.impl.circuitobject";
+
+message FileKey {
+	optional string file_key = 1;
+}
+
+message VersionKey {
+	optional string version_key = 1;
+}
+
+message CircuitFile {
+	optional string name = 1;
+
+	optional ViewPort view_port = 2;
+	optional CircuitData circuit_data = 3;
+	optional SimulationSettings simulation_settings = 4;
+
+	optional FileKey file_key = 5;
+	optional VersionKey version_key = 6;
+
+	optional VersionId version = 999;
+}
+
+message SimulationSettings {
+	enum Type {
+		TRANSIENT = 1;
+	}
+
+	message TransientSettings {
+		optional double duration = 1;
+	}
+
+	optional Type type = 1;
+	optional TransientSettings transient_settings = 2;
+
+	optional VersionId version = 999;
+}
+
+message ViewPort {
+	optional double scale = 1;
+	optional Point pan = 2;
+
+	optional VersionId version = 999;
+}

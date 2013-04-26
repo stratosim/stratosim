@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+
+  <body>
+
+<p>Hi,</p>
+
+<p>Thank you for being one of the first to try the StratoSim Circuit Simulator Beta!</p>
+
+<p>At StratoSim, we believe collaborative design and simulation tools are crucial for learning and innovation.</p>
+
+<p>You can access our beta by going to <a href="https://www.stratosim.com/app/">stratosim.com</a> and clicking "Sign In" at the top of the page.</p>
+
+<p>
+
+<#if emailDomain == "gmail.com">
+You can sign in using this Google Account.
+
+<#elseif emailDomain == "yahoo.com">
+You can sign in using this Yahoo Account.
+
+<#elseif emailDomain == "stratosim.com">
+You can sign in using this Google Apps Account.
+
+<#else>
+
+You can sign in using your StratoSim Account.<br />
+Username: ${username?html}<br />
+Password: ${password?html}<br />
+Please change your temporary password by clicking "Account Settings" after logging in.
+</#if>
+
+</p>
+
+<p>We appreciate you taking the time to play with our initial version and look forward to incorporating your feedback in the future development of our products.
+Please direct any feedback to <a href="mailto:feedback@stratosim.com">feedback@stratosim.com</a>.</p>
+
+<p>
+Thanks,<br />		
+StratoSim Team
+</p>
+
+  </body>
+</html>

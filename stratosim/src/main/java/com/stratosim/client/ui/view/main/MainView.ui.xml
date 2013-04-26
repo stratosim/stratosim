@@ -1,0 +1,619 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:stratosim="urn:import:com.stratosim.client.ui"
+	xmlns:stratosim-widget="urn:import:com.stratosim.client.ui.widget" xmlns:se="urn:import:com.stratosim.client.ui.schematiceditor"
+	xmlns:dp="urn:import:com.stratosim.client.ui.devicepanel" xmlns:sc="urn:import:com.stratosim.client.ui.sharechooser"
+	xmlns:fc="urn:import:com.stratosim.client.ui.filechooser" xmlns:vc="urn:import:com.stratosim.client.ui.versionchooser"
+	xmlns:gep="urn:import:com.stratosim.client.ui.graphexplorepanel">
+
+	<ui:style>
+		*:focus {
+			outline: none;
+		}
+		
+		body {
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		
+		@external stratosim-SchematicPanel;
+		.stratosim-SchematicPanel {
+			background: none;
+		}
+		
+		@external stratosim-FramePanel-TitleLabel;
+		.stratosim-FramePanel-TitleLabel {
+			font-size: 16px;
+			padding-left: 7px;
+			padding-top: 7px;
+		}
+		
+		@external Caption;
+		.stratosim-FramePanel .Caption {
+			font-size: 16px;
+			padding-left: 7px;
+			padding-top: 7px;
+			padding-bottom: 18px;
+		}
+		
+		@external dialogContent;
+		.stratosim-FramePanel .dialogContent {
+			padding: 7px 7px 7px 7px;
+		}
+		
+		.stratosim-DialogFrame {
+			width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 2px;
+			margin-bottom: 10px;
+			background-color: #eee;
+			box-shadow: 3px 3px 5px 3px #666;
+			border: 1px solid black;
+			z-index: 1001;
+		}
+		
+		@external stratosim-FramePanel-CloseButton;
+		.stratosim-FramePanel-CloseButton {
+			
+		}
+		
+		/* Used for much more than just the editor. */
+		@external stratosim-Editor;
+		.stratosim-Editor {
+			margin-top: 2px;
+			margin-left: 2px;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			background-color: #eee;
+			box-shadow: 3px 3px 5px 3px #666;
+			border: 1px solid black;
+		}
+		
+		@external stratosim-Editor .stratosim-BetterTextBox;
+		.stratosim-Editor .stratosim-BetterTextBox {
+			border: 1px solid lightgray;
+			color: black;
+			font-size: 12px;
+			padding: 2px 2px 2px 2px;
+		}
+		
+		@external stratosim-Editor .stratosim-BetterTextBox-valid;
+		.stratosim-Editor .stratosim-BetterTextBox-valid {
+			background: #ddffdd;
+		}
+		
+		@external stratosim-Editor .stratosim-BetterTextBox-invalid;
+		.stratosim-Editor .stratosim-BetterTextBox-invalid {
+			background: #ffdddd;
+		}
+		
+		@external stratosim-DeviceList-Button;
+		.stratosim-DeviceList-Button {
+			width: 40px;
+			height: 40px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		@external stratosim-DeviceList-Caption;
+		.stratosim-DeviceList-Caption {
+			height: 20px;
+			width: 52px;
+			text-align: center;
+			font-size: 9px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		@external stratosim-ImagePanel;
+		.stratosim-ImagePanel {
+			background: #ffffff;
+		}
+		
+		@external stratosim-ImagePanel-Image;
+		.stratosim-ImagePanel-Image {
+			max-width: 100%;
+			max-height: 100%;
+		}
+		
+		@external stratosim-WidgetList-InnerPanel;
+		.stratosim-WidgetList-InnerPanel {
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+		
+		@external stratosim-WidgetList-Cell;
+		.stratosim-WidgetList-Cell {
+			cursor: hand;
+			cursor: pointer;
+			border: 1px solid black;
+		}
+		
+		.stratosim-WidgetList-Cell:hover {
+			border: 2px solid #66ccff;
+		}
+		
+		@external stratosim-WidgetList-Cell-selected;
+		.stratosim-WidgetList-Cell-selected {
+			border: 2px solid red;
+		}
+		
+		.stratosim-WidgetList-Cell-selected:hover {
+			border: 2px solid red;
+		}
+		
+		@external stratosim-NameTextBox;
+		.stratosim-NameTextBox {
+			background-color: rgba(255, 255, 255, 0.95);
+			cursor: pointer;
+			border: 0px solid white;
+			text-align: center;
+			font-size: 18px;
+			font-family: "Arial", "Sans-serif";
+			color: black;
+			margin-top: 8px;
+			margin-bottom: 8px;
+			margin-left: 10px;
+			margin-right: 10px;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			border-radius: 13px;
+			height: 26px;
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.stratosim-NameTextBox:focus {
+			cursor: auto;
+			background-color: white;
+			box-shadow: 1px 1px 3px 2px #666;
+			border: 1px solid gray;
+		}
+		
+		.stratosim-NameTextBox:hover {
+			color: #66ccff;
+		}
+		
+		.stratosim-NameTextBox:focus:hover {
+			color: black;
+		}
+		
+		.stratosim-MessageText {
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			z-index: 1001;
+		}
+		
+		@external stratosim-NameTextBox-uneditable;
+		.stratosim-NameTextBox-uneditable {
+			color: black;
+		}
+		
+		.stratosim-NameTextBox-uneditable:hover {
+			color: black;
+		}
+		
+		.stratosim-SimulationErrorsLabel {
+			background: rgba(255, 255, 200, 0.95);
+			border: 1px solid orange;
+			padding: 5px;
+		}
+		
+		.stratosim-ReadOnlyLabel {
+			background: rgba(200, 255, 200, 0.95);
+			border: 1px solid green;
+			padding: 5px;
+		}
+		
+		.semitransparent {
+			background-color: white;
+			opacity: 0.95;
+		}
+		
+		.dialogback {
+			background-color: white;
+			opacity: 0.70;
+			z-index: 1000;
+		}
+		
+		.dpleft {
+			margin-right: 0px;
+			border-right: 0px;
+		}
+		
+		.dpright {
+			margin-left: 0px;
+			border-left: 0px;
+		}
+		
+		.bigbutton {
+			background-color: lightgray;
+		}
+		
+		.nohighlight {
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		
+		.pageTitle {
+			font-family: arial;
+			font-size: 30px;
+			text-shadow: 3px 3px 3px #111111;
+			width: 100%;
+			text-align: right;
+			padding-right: 2px;
+		}
+		
+		.pageTitle,.pageTitle:link,.pageTitle:visited,.pageTitle:active {
+			color: #dddddd;
+		}
+		
+		.link {
+			display: block;
+		}
+		
+		.username {
+			padding-left: 2px;
+			padding-top: 17px;
+			font-weight: bold;
+		}
+		
+		.pageTitle:hover {
+			color: #66ccff;
+		}
+		
+		.betanotice {
+			width: 100%;
+			height: 100%;
+			color: gray;
+			font-size: 16px;
+			text-align: center;
+		}
+		
+		.tutorialFrame {
+			overflow: hidden;
+			width: 310px;
+			height: 410px;
+			margin-top: 10px;
+			margin-left: 10px;
+			background-color: #eee;
+			box-shadow: 3px 3px 5px 3px #666;
+			border: 1px solid black;
+		}
+		
+		@external displayblock;
+		.displayblock {
+			display: block;
+		}
+		
+		@external displaynone;
+		.displaynone {
+			display: none;
+		}
+	</ui:style>
+
+	<ui:image field='saveButtonImage' src="save.png" />
+	<ui:image field='openButtonImage' src="open.png" />
+	<ui:image field='newButtonImage' src="new.png" />
+	<ui:image field='shareButtonImage' src="share.png" />
+
+	<ui:image field='undoButtonImage' src="undo.png" />
+	<ui:image field='redoButtonImage' src="redo.png" />
+
+	<ui:image field='printButtonImage' src="print.png" />
+	<ui:image field='simulateButtonImage' src="simulate.png" />
+
+	<ui:image field='closeButtonImage' src="close.png" />
+
+	<ui:image field='zoomInButtonImage' src="zoomin.png" />
+	<ui:image field='zoomOutButtonImage' src="zoomout.png" />
+	<ui:image field='zoomFitButtonImage' src="zoomfit.png" />
+
+	<g:LayoutPanel ui:field="mainLayout">
+
+		<g:layer left="0px" right="0px" top="0px" bottom="0px">
+			<se:SchematicPanel ui:field="schematicPanel" />
+		</g:layer>
+
+		<g:layer left="250px" right="250px" bottom="0px" height="55px">
+			<g:HTML>
+				<div
+					class="{style.nohighlight} {style.betanotice} {style.semitransparent}">
+					Thank you for trying our beta. We'd like to hear about
+					<a href="mailto:feedback@stratosim.com" target="_blank">your
+						suggestions</a>
+					and
+					<a href="mailto:support@stratosim.com" target="_blank">any issues</a>
+					you have.
+				</div>
+			</g:HTML>
+		</g:layer>
+
+		<g:layer width="250px" left="0px" height="55px" bottom="0px">
+			<g:Label
+				addStyleNames="{style.username} {style.nohighlight} {style.semitransparent}"
+				ui:field="userLabel"></g:Label>
+		</g:layer>
+		<g:layer width="250px" left="0px" height="20px" bottom="0px">
+			<g:Anchor visible="false" ui:field="accountsLink"
+				addStyleNames="{style.link} {style.nohighlight} {style.semitransparent}"
+				target="_blank" href="/accounts/change-password"
+				horizontalAlignment="left">Account
+				Settings</g:Anchor>
+		</g:layer>
+
+		<g:layer width="250px" right="0px" height="35px" bottom="20px">
+			<g:Anchor
+				addStyleNames="{style.nohighlight} {style.pageTitle} {style.semitransparent}"
+				target="_blank" href="/">
+				StratoSim
+			</g:Anchor>
+		</g:layer>
+		<g:layer width="250px" right="0px" height="20px" bottom="0px">
+			<g:Grid addStyleNames="{style.nohighlight} {style.semitransparent}">
+				<g:row>
+					<g:customCell>
+						<g:FlowPanel width="135px"></g:FlowPanel>
+					</g:customCell>
+					<g:customCell>
+						<g:Anchor ui:field="tutorialLink" width="50px"
+							addStyleNames="{style.link}" horizontalAlignment="right" href="javascript:">Tutorial</g:Anchor>
+					</g:customCell>
+					<g:customCell>
+						<g:Anchor width="50px" addStyleNames="{style.link}" href="/logout"
+							horizontalAlignment="right">Logout</g:Anchor>
+					</g:customCell>
+				</g:row>
+			</g:Grid>
+		</g:layer>
+
+		<!-- Make the area in cracks visible but not clickable -->
+		<g:layer left="0px" width="248px" top="63px" height="42px">
+			<g:Label ui:field="crackLabel"
+				addStyleNames="{style.nohighlight} {style.semitransparent}"></g:Label>
+		</g:layer>
+
+		<!-- circuit name -->
+		<!-- size set exactly in code for centering -->
+		<g:layer left="0px" width="0px" top="0px" height="50px">
+			<stratosim-widget:BetterTextBox ui:field="nameTextBox"
+				stylePrimaryName="stratosim-NameTextBox" title="Click to rename" />
+		</g:layer>
+
+		<!-- size set exactly in code for centering -->
+		<g:layer left="0px" right="0px" top="30px" height="20px">
+			<stratosim-widget:MessageText
+				addStyleNames="{style.nohighlight} {style.stratosim-MessageText}"
+				ui:field="messageText" />
+		</g:layer>
+
+		<g:layer right="1px" width="300px" top="97px" height="150px">
+			<g:HTML ui:field="simulationErrorsLabel" addStyleNames="{style.stratosim-SimulationErrorsLabel}">
+			</g:HTML>
+		</g:layer>
+
+		<g:layer left="1px" top="110px" width="250px" height="100px">
+			<g:HTML ui:field="readOnlyLabel" addStyleNames="{style.stratosim-ReadOnlyLabel}">
+				<b>Read Only</b>
+				<br />
+				This file cannot be edited because the owner has not given you edit
+				permission.
+				You may copy and edit it or ask the owner to give you
+				edit permission.
+			</g:HTML>
+		</g:layer>
+
+		<g:layer right="62px" bottom="45px" height="430px" width="330px">
+			<g:LayoutPanel ui:field="tutorialPanel">
+				<g:layer left="0px" right="0px" top="0px" bottom="0px">
+					<g:Frame addStyleNames="{style.tutorialFrame}" url="/tutorial/embed">
+					</g:Frame>
+				</g:layer>
+				<g:layer right="12px" top="14px" width="28px" height="28px">
+					<g:PushButton ui:field="tutorialCloseButton">
+						<g:upFace image='{closeButtonImage}' />
+					</g:PushButton>
+				</g:layer>
+			</g:LayoutPanel>
+		</g:layer>
+
+		<!-- control buttons -->
+
+		<g:layer left="1px" width="62px" top="1px" height="87px">
+			<g:DockLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:north unit="PX" size="62">
+					<g:PushButton title="New" ui:field="newButton">
+						<g:upFace image='{newButtonImage}' />
+					</g:PushButton>
+				</g:north>
+				<g:north unit="PX" size="25">
+					<g:PushButton title="Delete" ui:field="deleteButton">
+						Delete
+					</g:PushButton>
+				</g:north>
+			</g:DockLayoutPanel>
+		</g:layer>
+
+		<g:layer left="63px" width="62px" top="1px" height="87px">
+			<g:DockLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:north unit="PX" size="62">
+					<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+						<g:PushButton title="Open" ui:field="openButton">
+							<g:upFace image='{openButtonImage}' />
+						</g:PushButton>
+					</g:SimpleLayoutPanel>
+				</g:north>
+				<g:north unit="PX" size="25">
+					<g:PushButton title="Versions" ui:field="versionsButton">
+						Versions
+					</g:PushButton>
+				</g:north>
+			</g:DockLayoutPanel>
+		</g:layer>
+
+		<g:layer left="125px" width="62px" top="1px" height="87px">
+			<g:DockLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:north unit="PX" size="62">
+					<g:PushButton title="Save" ui:field="saveButton">
+						<g:upFace image='{saveButtonImage}' />
+					</g:PushButton>
+				</g:north>
+				<g:north unit="PX" size="25">
+					<g:PushButton title="Copy" ui:field="copyButton">
+						Copy
+					</g:PushButton>
+				</g:north>
+			</g:DockLayoutPanel>
+		</g:layer>
+
+		<g:layer left="187px" width="62px" top="1px" height="62px">
+			<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:PushButton title="Share" ui:field="shareButton">
+					<g:upFace image='{shareButtonImage}' />
+				</g:PushButton>
+			</g:SimpleLayoutPanel>
+		</g:layer>
+
+		<g:layer right="63px" width="62px" top="1px" height="87px">
+			<g:DockLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:north unit="PX" size="62">
+					<g:PushButton title="Print" ui:field="printButton">
+						<g:upFace image='{printButtonImage}' />
+					</g:PushButton>
+				</g:north>
+				<g:north unit="PX" size="25">
+					<g:ToggleButton title="Print Format" ui:field="printButtonMore">
+					</g:ToggleButton>
+				</g:north>
+			</g:DockLayoutPanel>
+		</g:layer>
+
+		<g:layer right="50px" width="82px" top="86px" height="164px">
+			<stratosim-widget:GridList addStyleNames="stratosim-Editor {style.nohighlight}"
+				ui:field="printSettings" columns="1">
+			</stratosim-widget:GridList>
+		</g:layer>
+
+		<g:layer right="1px" width="62px" top="1px" height="87px">
+			<g:DockLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:north unit="PX" size="62">
+					<g:PushButton title="Simulate" ui:field="simulateButton">
+						<g:upFace image='{simulateButtonImage}' />
+					</g:PushButton>
+				</g:north>
+				<g:north unit="PX" size="25">
+					<g:ToggleButton title="Simulation Settings"
+						ui:field="simulateButtonMore">
+						Settings
+					</g:ToggleButton>
+				</g:north>
+			</g:DockLayoutPanel>
+		</g:layer>
+
+		<g:layer right="197px" width="62px" top="1px" height="62px">
+			<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:PushButton title="Undo (Ctrl+Z)" ui:field="undoButton">
+					<g:upFace image='{undoButtonImage}' />
+				</g:PushButton>
+			</g:SimpleLayoutPanel>
+		</g:layer>
+
+		<g:layer right="135px" width="62px" top="1px" height="62px">
+			<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:PushButton title="Redo (Ctrl+Y)" ui:field="redoButton">
+					<g:upFace image='{redoButtonImage}' />
+				</g:PushButton>
+			</g:SimpleLayoutPanel>
+		</g:layer>
+
+		<g:layer right="0px" width="46px" top="250px" height="46px">
+			<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:PushButton title="Zoom In" ui:field="zoomInButton">
+					<g:upFace image='{zoomInButtonImage}' />
+				</g:PushButton>
+			</g:SimpleLayoutPanel>
+		</g:layer>
+
+		<g:layer right="0px" width="46px" top="296px" height="46px">
+			<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:PushButton title="Zoom Out" ui:field="zoomOutButton">
+					<g:upFace image='{zoomOutButtonImage}' />
+				</g:PushButton>
+			</g:SimpleLayoutPanel>
+		</g:layer>
+
+		<g:layer right="0px" width="46px" top="342px" height="46px">
+			<g:SimpleLayoutPanel addStyleNames="{style.bigbutton}">
+				<g:PushButton title="Zoom Fit" ui:field="zoomFitButton">
+					<g:upFace image='{zoomFitButtonImage}' />
+				</g:PushButton>
+			</g:SimpleLayoutPanel>
+		</g:layer>
+
+		<g:layer right="1px" width="300px" top="89px" height="144px">
+			<stratosim:SimulationSettingsPanel
+				ui:field="simulationSettingsPanel" addStyleNames="stratosim-Editor"></stratosim:SimulationSettingsPanel>
+		</g:layer>
+
+		<g:layer right="50%" left="0px" top="100px" bottom="50px">
+			<gep:GraphExplorePanel addStyleNames="stratosim-Editor {style.nohighlight}"
+				ui:field="graphExplorePanel" />
+		</g:layer>
+
+		<g:layer left="0px" width="70px" top="100px" bottom="45px">
+			<dp:LeftDevicePanel ui:field="devicePanel"
+				addStyleNames="{style.dpleft} stratosim-Editor {style.nohighlight}" />
+		</g:layer>
+		<g:layer left="70px" width="190px" top="100px" bottom="45px">
+			<dp:SingleSublistDisplay ui:field="singleSublistDisplay"
+				addStyleNames="{style.dpright} stratosim-Editor {style.nohighlight}" />
+		</g:layer>
+
+		<g:layer left="0px" right="0px" top="0px" bottom="0px">
+			<g:Label ui:field="dialogBackPane" addStyleNames="{style.dialogback}">
+			</g:Label>
+		</g:layer>
+
+		<g:layer left="0px" right="0px" top="10%" bottom="10%">
+			<stratosim-widget:FramePanel ui:field="fileChooserPanelFrame"
+				addStyleNames="{style.stratosim-DialogFrame}" titleLabelText="Open">
+				<fc:FileChooser ui:field="fileChooser" />
+			</stratosim-widget:FramePanel>
+		</g:layer>
+
+		<g:layer left="0px" right="0px" top="10%" bottom="10%">
+			<stratosim-widget:FramePanel ui:field="versionChooserPanelFrame"
+				addStyleNames="{style.stratosim-DialogFrame}" titleLabelText="Version">
+				<vc:VersionChooser stylePrimaryName="stratosim-VersionChooser"
+					ui:field="versionChooser" />
+			</stratosim-widget:FramePanel>
+		</g:layer>
+
+		<g:layer left="0px" right="0px" top="10%" bottom="10%">
+			<stratosim-widget:FramePanel ui:field="sharePanelFrame"
+				addStyleNames="{style.stratosim-DialogFrame}" titleLabelText="Sharing Settings">
+				<sc:ShareChooser ui:field="shareChooser" />
+			</stratosim-widget:FramePanel>
+		</g:layer>
+
+		<g:layer left="0px" right="0px" height="200px" bottom="50%">
+			<stratosim-widget:FramePanel ui:field="notificationPanelFrame"
+				addStyleNames="{style.stratosim-DialogFrame}" titleLabelText="Notification"
+				showCloseButton="false">
+				<stratosim-widget:NotificationDialog
+					ui:field="notificationPanel" />
+			</stratosim-widget:FramePanel>
+		</g:layer>
+
+	</g:LayoutPanel>
+
+</ui:UiBinder> 

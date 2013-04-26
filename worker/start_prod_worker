@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Should run as root, for example from crontab.
+
+cd /home/ec2-user/worker/
+cherryd -c global.prod.config -d -i worker_prod

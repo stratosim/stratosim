@@ -1,0 +1,280 @@
+<#include "/include/Head.ftl">
+
+<link rel="stylesheet" href="/${VERSION}/home/images.css" />
+
+<#include "/include/Body.ftl">   
+
+      <div class="hero-unit" >
+	    <h1>StratoSim Circuit Simulator</h1>
+        <h2>Build, Simulate and Share Circuits Online</h2>
+	    <br />
+	    <br />
+	    <div class="video-back">
+            <iframe src="https://www.youtube.com/embed/YVp8w8y873E?rel=0&showinfo=0&modestbranding=1&iv_load_policy=1&html5=1&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+	    </div>
+         <br />
+         <br />
+         <br />
+      </div>
+
+      <#-- This is special because it has an id -->
+      <form id="main-trybox" action="javascript:" class="alert alert-info form-inline trybox">
+	  <input type="submit" value="Create Account" class="btn btn-primary btn-large submit" ></input>
+
+	  <h2>Try it now:&nbsp;</h2>
+          <span class="control-group">
+	        <input class="input" type="text" placeholder="Enter your email address here..."> </input>
+            <span class="help-inline">Uh Oh! This doesn't seem like a valid email.</span>
+          </span>
+       </form>
+
+      <hr>
+
+      <div class="row">
+          <div class="span12">
+             <h2>Where</h2>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <h3>At School</h3>
+          <p>
+            StratoSim tools fit nicely into undergraduate and
+            high school engineering and physics classes. Students
+            can easily create and simulate circuits online, embed them on a 
+            class blog, or export them for reports. Interested in trying it out
+            in your class? <a href="mailto:contact@stratosim.com" target="_blank">Talk to us
+            </a> about setting up our tools to make your life easy by sending you
+            submission reports, integrating your toolbox, and much more!
+          </p>
+        </div>
+        <div class="span4">
+          <div class="thumbnail thumbnail-screenshot">
+             <div class="sprite screenshot2" ></div>
+          </div>
+        </div>
+        <div class="span4">
+          <h3>At Work</h3>
+          <p>
+            We're actively working on getting our tool ready for professionals.
+            Our simulator is user friendly, collaborative and cloud based
+            for the future. Your data is
+            always stored securely and backed up to multiple servers.
+            You can even use PSPICE or HSPICE or your own models instead of the default
+            Ngspice by <a href="mailto:contact@stratosim.com" target="_blank">contacting us</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <div class="thumbnail thumbnail-screenshot">
+             <div class="sprite screenshot1" ></div>
+          </div>
+        </div>
+        <div class="span4">
+          <h3>At Home</h3>
+          <p>
+            Hobbyists can quickly document and test their designs during
+            while building the next big thing. Designs are versioned and
+            backed up, so it's easy to revert if needed. By sharing designs using a
+            unique URL and embed widget, others can give feedback and build 
+            upon existing designs. Try it for your next project!
+          </p>
+        </div>
+        <div class="span4">
+          <div class="thumbnail thumbnail-screenshot">
+             <div class="sprite screenshot3" ></div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+          <div class="span12">
+             <h2>Features</h2>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="span6">
+              <h3>Always Accessible</h3>
+              
+              <div class="thumbnail thumbnail-left">
+                <div class="sprite browser_logos" ></div>
+              </div>
+
+              <p>Your designs will be accessible from any modern web browser, meaning you
+              could build it on your desktop in your room and instantly have a friend
+              view it in lab. There's also no need to worry about what systems
+              your teammates are using since StratoSim will work with most major browsers.</p>
+            </div>
+
+          <div class="span6">
+              <h3>Safe and Secure</h3>
+              
+              <div class="thumbnail thumbnail-left">
+              <div class="sprite lock" ></div>
+              </div>
+              
+              <p>Because designs are safely stored and backed up in the cloud, you can be
+              sure that they'll be there even if you drop your laptop. Circuits are saved
+              periodically so you can always look at revision history. Collaborators are 
+              specified by an access control list set by you.</p>
+            </div>
+
+          </div>
+
+      <div class="row">
+          <div class="span6">
+              <h3>Intuitive Interface</h3>
+              
+              <div class="thumbnail thumbnail-left">
+              <div class="sprite interface" ></div>
+              </div>
+
+              <p>We take great care to ensure that schematic drawing feels natural. Instead of mode toggling, 
+              wires begin to route as soon as you click on a pin and stop routing when you click on another pin. You can
+              always move devices and wires by dragging them. Wires intelligently follow devices when
+              they move or rotate to making it easy to edit designs.</p>
+            </div>
+
+          <div class="span6">
+              <h3>SPICE Simulation</h3>
+              
+              <div class="thumbnail thumbnail-left">
+              <div class="sprite sim" ></div>
+              </div>
+              
+              <p>SPICE simulation is done with Ngspice, a widely used open source
+              simulator. After drawing your circuit, you can quickly configure simulation
+              settings, simulate your design and view results, without ever leaving
+              your browser. You can also export your data or download SPICE for 
+              analysis with other tools. Rather use PSPICE or HSPICE or your own models?
+              <a href="mailto:contact@stratosim.com" target="_blank">Talk to us</a> about integrating your 
+              organization's simulation tools.
+              </p>
+            </div>
+          </div>
+
+      <div class="row">
+          <div class="span6">
+            <h3>Simple Sharing</h3>
+            
+            <div class="thumbnail thumbnail-left">
+            <div class="sprite share" ></div>
+            </div>
+            
+            <p> Working in a team is simplified with StratoSim Circuit Simulator. All your team members
+            can simultaneously view circuits, and a full revision history lets 
+            everyone see how changes are made. Collaboration is also
+            great for students working together on an assignment, or for instructors
+            to quickly post simulations online.
+            </p>
+          </div>
+
+          <div class="span6">
+            <h3>Pretty Publishing</h3>
+            
+            <div class="thumbnail thumbnail-left">
+            <div class="sprite files" ></div>
+            </div>
+            
+            <p>Designs and charts can be easily exported to a variety of formats, including PDF, PNG, SVG, and EPS.
+            This makes it easy to print your designs, include them in reports and publications and send them
+            to other people.  Data can also be exported to CSV to be processed with more advanced graphing tools, 
+            and generated SPICE can be downloaded for doing more detailed simulations locally.
+            </p>
+          </div>
+        </div>
+        
+      <div class="row">
+          <div class="span6">
+            <h3>Easy Embedding</h3>
+            
+            <div class="thumbnail thumbnail-left">
+            <div class="sprite embed" ></div>
+            </div>
+
+            <p> Circuits and charts can be embedded in blogs and websites using the customizable StratoSim widget.  This
+            allows your viewers to easily download circuits and charts.  They can also open them with StratoSim Circuit Simulator,
+            and run their own modified simulations. Circuit and chart images may also be directly embedded in blogs, websites and 
+            emails.
+            </p>
+          </div>
+          <div class="span6">
+          </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+         <div class="span12">
+         <h2>Coming Soon</h2>
+
+          <p>We're working hard on a bunch of improvements including tablet support, real time collaboration,
+           more types of simulation and
+          better device libraries. We're also exploring ways to allow you to easily import
+          from and export to other schematic editors and simulation tools.  We always welcome your
+           <a href="mailto:feedback@stratosim.com" target="_blank">suggestions</a>.
+          </p>
+          </div>
+       </div>
+      <hr>
+
+      <div class="row">
+        <div class="span12">
+          <h2>Technology</h2>
+        </div>
+      </div>
+        
+        <div class="row">
+          <div class="span6">
+            <h3>HTML5</h3>
+            
+            <div class="thumbnail thumbnail-left">
+            <div class="sprite html5" ></div>
+            </div>
+
+            <p>Our product is based on HTML5 and JavaScript.  We always use current web 
+            standards to ensure a fluid experience from any modern web browser.</p>
+          </div>
+
+          <div class="span6">
+            <h3>Ngspice</h3>
+            
+            <div class="thumbnail thumbnail-left">
+            <div class="sprite nglogo" ></div>
+            </div>
+
+            <p>Simulations are performed by running Ngspice on our servers. Ngspice is a
+            mixed mode simulator based on Spice3f5, XSpice and Cider.</p>
+          </div>
+        </div>
+
+      <hr>
+      
+<#include "/include/TryBox.ftl">
+
+<#include "/include/Foot.ftl">   
+
+    <script>
+        $(function() {
+          if (window.location.hash == "#signup") {
+            $("#main-trybox .input").popover({
+              "placement" : "top",
+              "trigger" : "manual",
+              "title" : "<a name='signupbox'></a>Sign Up",
+              "content" : "It looks like you don't have an account yet. Please create an account below to get your hands on our circuit simulator!"
+            });
+            $("#main-trybox .input").popover("show");
+            window.location.hash = "#signupbox";
+          } else if (window.location.hash != "#signupbox") {
+            setSource();
+          }
+        });
+    </script>
+
+<#include "/include/End.ftl">   

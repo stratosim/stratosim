@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:stratosim-widget="urn:import:com.stratosim.client.ui.widget">
+
+	<ui:style>
+		@external stratosim-NotificationDialog-button;
+		.stratosim-NotificationDialog-button {
+			width: 50px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 10px;
+		}
+
+		.message {
+			font-size: 13px;
+	
+			padding-top: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	</ui:style>
+	
+	<ui:image field='warningImage' src="warning.png" />
+	<ui:image field='errorImage' src="error.png" />
+
+	<g:DockLayoutPanel>
+		<g:west size="20">
+			<g:Label></g:Label>
+		</g:west>
+		<g:west size="50">
+			<g:Image ui:field="iconImage"></g:Image>
+		</g:west>
+		<g:center>
+			<g:Label addStyleNames="{style.message}" ui:field="message"></g:Label>
+		</g:center>
+		<g:south size="45">
+			<g:DockLayoutPanel ui:field="buttonPanel">
+			</g:DockLayoutPanel>
+		</g:south>
+	</g:DockLayoutPanel>
+
+</ui:UiBinder> 

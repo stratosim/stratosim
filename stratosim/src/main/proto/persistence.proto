@@ -1,0 +1,9 @@
+package proto;
+
+option java_package = "com.stratosim.server.persistence.proto";
+
+message VersionMetadataPb {
+  optional string saver_email = 2;  // email of the user who saved this version
+  optional string name = 3;
+  optional string circuit_hash = 4;
+}

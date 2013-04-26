@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Should run as root, for example from crontab.
+
+cherryd -c global.dev.config -i worker_dev

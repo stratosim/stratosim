@@ -1,0 +1,96 @@
+package proto;
+
+import "util.proto";
+
+option java_package = "com.stratosim.shared.model.circuit.impl.circuitobject";
+
+// -----------------------------------------------------------------------------------------------
+// Data definitions
+// -----------------------------------------------------------------------------------------------
+
+message Id {
+	optional bytes data = 1;
+}
+
+// -----------------------------------------------------------------------------------------------
+// Device library definitions
+// -----------------------------------------------------------------------------------------------
+
+// These will point to entries in the device library.
+
+message DeviceTypeId {
+	optional string name = 1;
+	optional string model = 2;
+
+	optional VersionId version = 999;
+}
+
+message ParameterTypeId {
+	optional string name = 1;
+
+	optional VersionId version = 999;
+}
+
+// -----------------------------------------------------------------------------------------------
+// Circuit data definitions
+// -----------------------------------------------------------------------------------------------
+
+message CircuitData {
+	// the basic data
+	repeated Wire wires = 1;
+	repeated Device devices = 2;
+	repeated Parameter parameters = 3;
+
+	// the relationships
+	message DeviceParameterOwnership {
+		optional Id device_id = 1;
+		repeated Id parameter_ids = 2;
+	}
+	repeated DeviceParameterOwnership device_parameter_ownerships = 4;
+
+	message Connection {
+		optional Connector connector1 = 1;
+		optional Connector connector2 = 2;
+	}
+	repeated Connection connections = 5;
+
+	optional VersionId version = 999;
+}
+
+message Device {
+	optional Id id = 1;
+	
+	optional DeviceTypeId device_type = 2;
+	
+	optional Point location = 3;
+	optional int32 rotation = 4;
+	optional bool mirrored = 5;
+
+	optional VersionId version = 999;
+}
+
+message Parameter {
+	optional Id id = 1;
+
+	optional ParameterTypeId parameter_type = 2;
+
+	optional string value = 3;
+
+	optional VersionId version = 999;
+}
+
+message Connector {
+	optional Id owner_id = 1;  // id of a device or a wire
+	optional string name = 3;  // this can be a device port
+	                           // or "0" or "1" for a wire
+
+	optional VersionId version = 999;
+}
+
+message Wire {
+	optional Id id = 1;
+
+	repeated Point vertices = 2;
+
+	optional VersionId version = 999;
+}

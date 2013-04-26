@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /app/
+Disallow: /public/
+Disallow: /accounts/
+Disallow: /{{ app_version }}/
+Disallow: /privacy
+Disallow: /terms

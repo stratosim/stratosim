@@ -1,0 +1,12 @@
+[global]
+server.environment: 'production'
+server.socket_host: '0.0.0.0'
+server.socket_port: 80{{ app_version }}
+server.ssl_module: 'builtin'
+server.ssl_certificate: '/home/ec2-user/cert/server.crt'
+server.ssl_private_key: '/home/ec2-user/cert/server.key'
+server.thread_pool: 100
+server.thread_pool_max: -1
+log.access_file: '/home/ec2-user/tmp/cherrypy.access.log'
+log.error_file: '/home/ec2-user/tmp/cherrypy.error.log'
+tools.trailing_slash.on: False

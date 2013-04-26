@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+
+<body>
+<table width="100%" style="border: 3px solid gray; font-family: arial; border-collapse: collapse; font-size: 14px;">
+
+<tr>
+
+<td style="background: lightgray; font-size: 20px; border: none; padding: 10px 10px 10px 10px; margin: 0;">
+<a style="text-decoration: none; color: black;" href="mailto:${username?html}">${username?html}</a> has shared <a style="text-decoration: underline; color: #0066cc;" href="${link}">${title?html}</a>
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding: 10px 10px 10px 10px;">
+<a style="color: #0066cc;" href="${link}">Open and simulate</a> the schematic online using StratoSim.
+</td>
+
+</tr>
+
+<tr>
+<td style="padding: 10px 10px 10px 10px;">
+
+<a style="text-decoration:none; color: #dddddd; font-weight: normal; font-size: 28px; text-shadow: 3px 3px 3px #111111; margin-left: -3px;" href="http://www.stratosim.com/">
+StratoSim
+<img src="https://www.stratosim.com/{{ app_version }}/img/logo.svg" width="39px" height="24px" alt="Logo" />
+</a>
+
+<br />
+
+<small>
+Build, simulate and share circuits online
+</small>
+
+</td>
+
+</tr>
+
+</table>
+</body>
+
+</html>

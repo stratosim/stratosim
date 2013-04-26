@@ -1,0 +1,237 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:stratosim-widget="urn:import:com.stratosim.client.ui.widget">
+
+	<ui:style>
+		@external stratosim-ShareChooser-TextBox;
+		.stratosim-ShareChooser-TextBox {
+			width: 500px;
+			margin-left: 7px;
+			margin-right: 7px;
+		}
+		
+		@external stratosim-ShareChooser-OptionList;
+		.stratosim-ShareChooser-OptionList {
+			width: 200px;
+		}
+		
+		@external stratosim-ShareChooser-OptionList-Button;
+		.stratosim-ShareChooser-OptionList-Button {
+			height: 25px;
+			width: 25px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		@external stratosim-ShareChooser-PublicOptions;
+		.stratosim-ShareChooser-PublicOptions {
+			margin-top: 7px;
+			margin-left: 7px;
+			margin-bottom: 7px;
+			width: 100px;
+		}
+
+		@external stratosim-ShareChooser-CircuitEmbedTypes;
+		@external stratosim-ShareChooser-SimulateEmbedTypes;
+		.stratosim-ShareChooser-CircuitEmbedTypes,
+		.stratosim-ShareChooser-SimulateEmbedTypes {
+			float: left;
+			margin-left: 7px;
+			margin-top: 7px;
+			margin-bottom: 7px;
+		}
+		
+		.stratosim-ShareChooser-CircuitEmbedTypes {
+			width: 290px;
+		}
+		
+		.stratosim-ShareChooser-SimulateEmbedTypes {
+			width: 240px;
+		}
+		
+		@external stratosim-ShareChooser-EmbedTargets;
+		.stratosim-ShareChooser-EmbedTargets {
+			float: right;
+			width: 100px;
+			margin-right: 7px;
+			margin-top: 7px;
+			margin-bottom: 7px;
+		}
+		
+		@external stratosim-ShareChooser-PublicOptions-Button;
+		@external stratosim-ShareChooser-CircuitEmbedTypes-Button;
+		@external stratosim-ShareChooser-SimulateEmbedTypes-Button;
+		@external stratosim-ShareChooser-EmbedTargets-Button;
+
+		.stratosim-ShareChooser-PublicOptions-Button,
+		.stratosim-ShareChooser-CircuitEmbedTypes-Button,
+		.stratosim-ShareChooser-SimulateEmbedTypes-Button,
+		.stratosim-ShareChooser-EmbedTargets-Button {
+			height: 25px;
+			width: 25px;
+		}
+		
+		.stratosim-ShareChooser-PublicOptions-Button {
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.stratosim-ShareChooser-EmbedTypes-Button {
+			margin-left: 0px;
+			margin-right: auto;
+		}
+		
+		.stratosim-ShareChooser-EmbedTargets-Button {
+			margin-left: auto;
+			margin-right: 0px;
+		}
+		
+		@external stratosim-ShareChooser-PublicOptions-Caption;
+		.stratosim-ShareChooser-PublicOptions-Caption {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		@external stratosim-ShareChooser-TextBox-readonly;
+		.stratosim-ShareChooser-TextBox-readonly {
+			background: none;
+			border: none;
+			color: black;
+		}
+		
+		.grid {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		.scroll {
+			border: 1px solid gray;
+			width: 750px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 25px;
+		}
+		
+		.warningLabel {
+			display: block;
+			width: 750px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.grid tr {
+			border-bottom: 1px solid lightgray;
+		}
+		
+		.grid tr tr {
+			border: none;
+		}
+		
+		.headings {
+			width: 200px;
+			border-collapse: collapse;
+		}
+		
+		.headings td {
+			width: 50px;
+			text-align: center;
+		}
+		
+		.add {
+			width: 25px;
+			height: 25px;
+			margin-left: 6px;
+		}
+		
+		.done {
+			width: 70px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			margin-left: 710px;
+		}
+	</ui:style>
+
+	<ui:image field='ownButtonImage' src="own.png" />
+	<ui:image field='editButtonImage' src="edit.png" />
+	<ui:image field='viewButtonImage' src="view.png" />
+	<ui:image field='removeButtonImage' src="remove.png" />
+
+	<ui:image field='publicButtonImage' src="public.png" />
+	<ui:image field='privateButtonImage' src="private.png" />
+
+	<ui:image field='linkButtonImage' src="link.png" />	
+	<ui:image field='htmlButtonImage' src="html.png" />
+	<ui:image field='pdfButtonImage' src="pdf.png" />
+	<ui:image field='epsButtonImage' src="eps.png" />
+	<ui:image field='svgButtonImage' src="svg.png" />
+	<ui:image field='pngButtonImage' src="png.png" />
+	
+	<ui:image field='fileButtonImage' src="file.png" />
+	<ui:image field='versionButtonImage' src="version.png" />
+
+	<ui:image field='addButtonImage' src="add.png" />
+
+	<g:DockLayoutPanel>
+		<g:center>
+			<g:ScrollPanel addStyleNames="{style.scroll}">
+				<g:Grid addStyleNames="{style.grid}" ui:field="grid">
+					<g:row>
+						<g:cell>
+						</g:cell>
+						<g:customCell>
+							<g:Grid addStyleNames="{style.headings}">
+								<g:row>
+									<g:cell>Own</g:cell>
+									<g:cell>Edit</g:cell>
+									<g:cell>View</g:cell>
+									<g:cell></g:cell>
+								</g:row>
+							</g:Grid>
+						</g:customCell>
+					</g:row>
+					<g:row>
+						<g:customCell>
+							<g:TextBox ui:field="addEmail" addStyleNames="stratosim-ShareChooser-TextBox"></g:TextBox>
+						</g:customCell>
+						<g:customCell>
+							<g:PushButton ui:field="addButton" addStyleNames="{style.add}"
+								title="Add new collaborator" enabled="false">
+								<g:upFace image="{addButtonImage}"></g:upFace>
+							</g:PushButton>
+						</g:customCell>
+					</g:row>
+				</g:Grid>
+			</g:ScrollPanel>
+		</g:center>
+		<g:south size="45">
+			<g:PushButton ui:field="doneButton" addStyleNames="{style.done}">Done</g:PushButton>
+		</g:south>
+		<g:south size="45">
+			<g:Label ui:field="warningLabel" addStyleNames="{style.warningLabel}">
+
+			</g:Label>
+		</g:south>
+		<g:north size="114">
+			<g:DockLayoutPanel addStyleNames="{style.scroll}">
+				<g:center>
+					<g:FlowPanel>
+						<stratosim-widget:GridList stylePrimaryName="stratosim-ShareChooser-CircuitEmbedTypes"
+							ui:field="circuitEmbedTypes" columns="6"></stratosim-widget:GridList>
+						<stratosim-widget:GridList stylePrimaryName="stratosim-ShareChooser-SimulateEmbedTypes"
+							ui:field="simulateEmbedTypes" columns="5"></stratosim-widget:GridList>
+						<stratosim-widget:GridList stylePrimaryName="stratosim-ShareChooser-EmbedTargets"
+							ui:field="embedTargets" columns="2"></stratosim-widget:GridList>
+						<g:TextBox ui:field="embedCode" addStyleNames="stratosim-ShareChooser-TextBox"
+							readOnly="true"></g:TextBox>
+					</g:FlowPanel>
+				</g:center>
+				<g:west size="222">
+					<stratosim-widget:GridList stylePrimaryName="stratosim-ShareChooser-PublicOptions"
+						ui:field="publicOptions" columns="2"></stratosim-widget:GridList>
+				</g:west>
+			</g:DockLayoutPanel>
+		</g:north>
+	</g:DockLayoutPanel>
+
+</ui:UiBinder> 

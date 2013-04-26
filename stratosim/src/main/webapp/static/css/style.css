@@ -1,0 +1,192 @@
+h1.title {
+	display: block;
+	margin-top: 5px;
+	padding-top: 5px;
+	height: 40px;
+	width: 250px;
+	text-shadow: 2px 2px 2px #999999;
+	color: lightgray;
+	font-weight: normal;
+	font-size: 40px;
+	background-image: url('../img/logo.svg');
+	background-size: 50px 30px;
+	background-position: 180px 0px;
+	background-repeat: no-repeat;
+}
+
+.hero-unit {
+	background-image: url('../img/background.svg');
+}
+
+.hero-unit h1,.hero-unit h2 {
+	display: block;
+	text-align: center;
+}
+
+.hero-unit h1 {
+	font-size: 40px;
+	text-shadow: 2px 2px 2px darkgray;
+}
+
+.thumbnail {
+	margin-bottom: 10px;
+}
+
+.thumbnail-left {
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.thumbnail-right {
+	float: right;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.thumbnail-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.thumbnail-screenshot {
+	float: left;
+	margin-left: 20px;
+}
+
+p {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 30px;
+}
+
+h2 {
+	padding-bottom: 30px;
+}
+
+.nav .active .blue:link, .nav .active .blue:visited, .nav .active .blue:hover {
+	background-color: #3399cc;
+}
+
+.nav .blue:link, .nav .blue:visited {
+	color: #3399cc;
+}
+
+.nav-collapse {
+	float: right;
+}
+
+.video-back {
+	margin-left: auto;
+	margin-right: auto;
+	width: 520px;
+	height: 340px;
+	border-radius: 10px;
+	background-color: #111111;
+}
+
+.video-back iframe {
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 500px;
+	height: 320px;
+}
+
+.trybox {
+	padding-left: 80px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.trybox .submit {
+	float: right;
+	margin-right: 50px;
+}
+
+.trybox .input {
+	width: 470px;
+	height: 40px;
+	margin-top: -5px;
+	font-size: 15px;
+}
+
+.trybox h2 {
+	display: inline;
+}
+
+.trybox .help-inline {
+	padding-left: 135px;
+	display: none;
+}
+
+.trybox .error .help-inline {
+	display: inline;
+}
+
+.tutorial-cell {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	width: 240px;
+	height: 300px;
+}
+
+.tutorial-cell p {
+	padding: 0;
+}
+
+iframe.thumbnail {
+	margin-left: 10px;
+}
+
+.janrainContainer {
+	margin-left: 25px;
+}
+
+.janrainMimic {
+	width: 370px;
+	margin-left: 25px;
+	padding: 11px 11px 11px 11px;
+	border: 1px solid #bbbbbb;
+	border-radius: 8px;
+}
+
+.invalid {
+	color: red;
+	text-align: center;
+	display: none;
+}
+
+.success {
+	color: green;
+	text-align: center;
+	display: block;
+}
+
+.janrainMimic form {
+	margin-bottom: 0px;
+}
+
+.janrainMimic .form-horizontal .controls {
+	margin-left: 90px;
+}
+
+.janrainMimic .form-horizontal .control-label {
+	width: 80px;
+}
+
+.next {
+	float: right;
+}
+
+.prev {
+	float: left;
+}
+
+.open-button {
+	float: right;
+}

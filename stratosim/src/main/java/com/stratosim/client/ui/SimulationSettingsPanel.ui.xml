@@ -1,0 +1,41 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:stratosim-widget="urn:import:com.stratosim.client.ui.widget">
+
+	<ui:style>
+		
+	</ui:style>
+
+	<g:TabLayoutPanel ui:field="simulationType" barUnit="PX"
+		barHeight="30">
+		<g:tab>
+			<g:header>Transient</g:header>
+			<g:Grid>
+				<g:row>
+					<g:cell>Duration: </g:cell>
+					<g:customCell>
+						<stratosim-widget:BetterTextBox ui:field="transientDuration"></stratosim-widget:BetterTextBox>
+					</g:customCell>
+				</g:row>
+			</g:Grid>
+		</g:tab>
+		<g:tab>
+			<g:header>AC Small Signal</g:header>
+			<g:Grid>
+				<g:row>
+					<g:cell>Start Frequency: </g:cell>
+					<g:customCell>
+						<stratosim-widget:BetterTextBox ui:field="startFrequency"></stratosim-widget:BetterTextBox>
+					</g:customCell>
+				</g:row>
+				<g:row>
+					<g:cell>Stop Frequency: </g:cell>
+					<g:customCell>
+						<stratosim-widget:BetterTextBox ui:field="stopFrequency"></stratosim-widget:BetterTextBox>
+					</g:customCell>
+				</g:row>
+			</g:Grid>
+		</g:tab>
+	</g:TabLayoutPanel>
+
+</ui:UiBinder> 

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<style>
+p {background-color: white; text-align: center; width: 100%; display: block;}
+</style>
+</script>
+</head>
+<body">
+<div id="main">
+</div>
+<script type="text/javascript">
+  var count = 5;
+  var rcount = window.location.search.substring(1, 2);
+  
+  function start() {
+    if (isNaN(rcount) || rcount < 0 || rcount > 5) {
+      rcount = 5;
+    }
+    rcount--;
+    if (rcount != 0) {
+      setTimeout(tick, 1000);
+    } else {
+      document.getElementById("main").innerHTML = "<p>Image failed to generate.</p>"
+    }
+  }
+
+  function tick() {
+    document.getElementById("main").innerHTML = "<p>Image is generating, will check again in " + count + " seconds.</p>";
+    if (count == 0) {
+      if (isNaN(window.location.search.substring(1, 2))) {
+        window.location.search = rcount + "&" + window.location.search.substring(1);
+      } else {
+        window.location.search = rcount + "&" + window.location.search.substring(3);
+      }
+    } else {
+      count--;
+      setTimeout(tick, 1000);
+    }
+  }
+  
+  start();
+</script>
+</body>
+</html>

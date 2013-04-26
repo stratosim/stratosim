@@ -1,0 +1,426 @@
+<#include "/include/Head.ftl">
+
+<link rel="stylesheet" href="/${VERSION}/tutorial/images.css">
+
+<#include "/include/Body.ftl">   
+
+      <div class="row">
+          <div class="span12">
+             <h2>Getting Started</h2>
+          </div>
+      </div>
+
+      <div class="row">
+         <div class="span12">
+
+          <div class="thumbnail thumbnail-right sprite stratoman" ></div>
+          <p>
+          Thanks for trying StratoSim Circuit Simulator! The best way to get started with 
+          StratoSim is to dive in and build a simple circuit. This tutorial
+          will walk you through building an RC circuit and performing transient analysis
+          with StratoSim.
+          </p>
+
+        </div>
+      </div>
+
+<#include "/include/TryBox.ftl">
+
+      <hr>
+          
+      <div class="row">
+         <div class="span12">
+          <h3>Placing Devices</h3>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="span4">
+          <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image11" ></div>
+          <p>We'll start by placing a DC voltage source. Click on the voltage source icon on the
+          device panel. We want to place the default 1V DC source.</p>
+          </div>
+          </div>
+          
+         <div class="span4">
+          <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image12"></div>
+          <p>To place the device, click the device in the device panel and then click on the drawing area. 
+          You can always press escape to get out of placing mode (or any mode).</p>
+          </div>
+          </div>
+          
+         <div class="span4">
+          <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image13"></div>
+          <p>Now we'll place a rotated resistor. Select the resistor icon on the device panel for passive components. Common
+          values are listed in the panel.</p>
+          </div>
+          </div>
+        </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image14"></div>
+          <p>Instead of placing the default value, we'll click on the 40 ohm value. The default updates
+          to reflect the most recently selected value. </p>
+          </div>
+         </div>
+                    
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image15"></div>
+          <p>Click the 40 ohm resistor in the panel, press "r" to rotate the device clockwise and
+          click on the circuit to the top right of the source and place a rotated resistor. </p>
+          </div>
+         </div>
+
+         <div class="span4">
+          </div>
+        </div>
+          
+      <hr>
+
+      <div class="row">
+         <div class="span12">
+          <h3>Rotating and Moving Devices</h3>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image21"></div>
+          <p>
+          Next we'll place a capacitor. This time, we'll rotate it and change its value
+          after we place it. Place a capacitor to the bottom right of the resistor, then click
+          to select it.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image22"></div>
+          <p>
+          Once selected, rotate the capacitor by clicking on the rotate right icon. You can also flip devices using the
+          flip buttons.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image23"></div>
+          <p>
+          Oops, the capacitor would look better lined up with the resistor. Click and drag the capacitor
+          to be lined up with the resistor.  Or, try deleting it by selecting and pressing delete, and then
+          place a new capacitor.
+          </p>
+          </div>
+         </div>
+
+       </div>
+
+      <hr>
+          
+      <div class="row">
+         <div class="span12">
+          <h3>Editing Parameters</h3>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image31"></div>
+          <p>
+          Now let's make the capacitor 40uF. Click on the label to bring up the parameter editor. Click on the "Value" text box
+          and enter 40uF.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image32"></div>
+          <p>
+          The box turns green for valid values and red for invalid ones.  Values can
+          be expressed in scientific or engineering notation and are followed by the unit. For example,
+          40uF, 4e-5F and 0.00004F are all valid values.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image33"></div>
+          <p>
+          The standard spice suffixes (m, u, n, p, k, meg, g, t)
+          are all supported for engineering notation. You can close the editor by pressing enter,
+          or clicking a blank part of the circuit.
+          </p>
+          </div>
+         </div>
+          
+      </div>
+
+      <hr>
+
+      <div class="row">
+         <div class="span12">
+          <h3>Placing Wires</h3>
+         </div>
+       </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image41"></div>
+          <p>
+          Time to connect the devices! Click on the top pin of the voltage source (the orange dot). As
+          you move your mouse, a wire segment will follow. Click on the pin on the left side of the resistor to place the segment.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image43"></div>
+          <p>
+          Place all the remaining wires. Clicking on a blank part of the circuit toggles between
+          vertical and horizontal. Pins change from orange to black to 
+          indicate they've been connected. You can always cancel wire mode by pressing escape.
+          </p>
+          </div>
+         </div>
+
+          <div class="span4">
+          </div>
+        </div>
+
+      <hr>
+
+      <div class="row">
+         <div class="span12">
+          <h3>Connect on Place</h3>
+         </div>
+       </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image51"></div>
+          <p>
+          Devices will automatically connect to wires if their pin is on top of a wire when placed or
+          dragged. Let's try it. Click on the ground icon in the device panel (under the sources tab). 
+          </p>
+          </div>
+         </div>
+
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image52"></div>
+          <p>
+          Line up the ground's shadow so that the pin is on top of the
+          bottom wire. When you click to place, the pin is automatically connected to the wire.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image53"></div>
+          <p>
+          Now, we'll
+          place a voltage probe to measure voltage across the capacitor using drag to autoconnect. 
+          Click the voltage probe icon and place it on a blank spot in the circuit.
+          </p>
+          </div>
+         </div>
+
+        </div>
+          
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image55"></div>
+          <p>
+          Drag the probe so the
+          top pin is over the wire going from the resistor to the capacitor and place the probe. The probe
+          is automatically connected.
+          </p>
+          </div>
+         </div>
+
+         <div class="span4">
+          </div>
+
+
+         <div class="span4">
+          </div>
+
+        </div>
+
+      <hr>
+          
+      <div class="row">
+         <div class="span12">
+          <h3>Moving Wires</h3>
+         </div>
+       </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image61"></div>
+          <p>
+          The name of the probe looks ugly on top of the capacitor. Move the wire on the right to expand the
+          circuit a bit, by clicking on the segment and dragging it to the right.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image62"></div>
+          <p>
+           Then, move the capacitor to the right, and move the probe down a little.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image63"></div>
+          <p>
+          Click on the probe's label and change the name to "Cap" to indicate it's measuring
+          the voltage across the capacitor.
+          </p>
+          </div>
+         </div>
+     </div>
+
+      <hr>
+          
+      <div class="row">
+         <div class="span12">
+          <h3>Printing</h3>
+         </div>
+       </div>
+          
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image71"></div>
+          <p>
+          Time to download our amazing RC circuit! Click on the print icon on the top right to download
+          the circuit as a pdf. The circuit can now be printed or emailed as a pdf.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image72"></div>
+          <p>
+          Depending on your browser, clicking print may prompt you to download, or display it
+          in a new window. You can also choose png, svg or eps to download the file in these formats.
+          </p>
+          </div>
+         </div>
+
+         <div class="span4">
+          </div>
+        </div>
+          
+       <hr>
+
+      <div class="row">
+         <div class="span12">
+          <h3>Simulating</h3>
+         </div>
+       </div>
+
+      <div class="row">          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image81"></div>
+          <p>
+          Now for the real fun! Click the lightning bolt at the top right to perform transient analysis on
+          the circuit.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image82"></div>
+          <p>
+          The graphs displayed correspond to the probes you've placed in the circuit. Probes with the same "group" parameter
+          are plotted on the same plot. You can also change the color parameter to red, orange, yellow, green, blue and purple.
+          </p>
+          </div>
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image83"></div>
+          <p>
+          The circuit is not editable during simulation mode, but parameters can be viewed and the circuit can be zoomed and 
+          panned just as in edit mode. To go back into editing, 
+          click the lightning bolt toggle button. 
+          </p>
+          </div>
+         </div>
+      </div>
+          
+      <hr>
+
+      <div class="row">          
+         <div class="span4">
+          <h3>Saving</h3>
+        </div>
+      </div>
+
+      <div class="row">
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image91"></div>
+          <p>
+          Finally, let's name our awesome RC circuit and save it. Click on the title (currently "Untitled") and change it to "Awesome RC Circuit".
+          </p>
+          </div>       
+         </div>
+          
+         <div class="span4">
+         <div class="thumbnail tutorial-cell">
+          <div class="thumbnail thumbnail-center sprite image93"></div>
+          <p>
+          Click the save icon to store the circuit in the cloud and access it from anywhere!
+          </p>
+          </div>
+         </div>
+
+         <div class="span4">
+          </div>
+       </div>
+          
+       <hr>
+
+      <div class="row">
+          <div class="span12">
+          <h3>Woohoo!</h3>
+          <p>You've just built and simulated your circuit with StratoSim!  That's all for this tutorial. We hope you
+          had fun, and enjoy using StratoSim.
+          </p>
+          </div>
+      </div>
+
+<#include "/include/TryBox.ftl">
+
+<#include "/include/Foot.ftl">
+
+<#include "/include/End.ftl">   

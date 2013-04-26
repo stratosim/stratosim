@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  	<#if error404??>
+    <title>File Not Found</title>
+  	</#if>
+  	<#if error403??>
+    <title>Access Denied</title>
+  	</#if>
+  	<#if error400??>
+    <title>Invalid Request</title>
+  	</#if>
+
+    <style>
+    	html, body {
+    		position: relative;
+    		font-family: Arial;
+    		
+    		width: 100%;
+    		height: 100%;
+    		border: none;
+    		padding: 0px;
+    		margin: 0px;
+    	}
+
+    	#main {
+    		position: absolute;
+    		left: 50%;
+    		top: 50%;
+    		
+    		width: 300px;
+    		height: 300px;
+    		
+    		margin-left: -150px;
+    		margin-top: -150px;
+    		
+    		padding: 15px;
+    		
+    		border: 2px solid gray;
+    		border-radius: 15px;
+    		
+    		background: #eeeeee;
+    		
+    		font-size: 14px;
+    	}
+    	
+    	h1 {
+    		font-size: 18px;
+    	}
+    	
+    	p {
+    		margin: 5px;
+    	}
+    	
+    	ul {
+    		padding-top: 5px;
+    		margin: 5px;
+    	}
+    	
+    	li {
+    		margin-bottom: 5px;
+    	}
+    </style>
+  </head>
+
+  <body>
+  	<div id="main">
+  	<#if error404??>
+  		<h1>File Not Found</h1>
+  		<p>
+  		  We're sorry, but we couldn't find the file you're looking for.
+  		  <ul>
+  		     <li>Please check to see that the URL is correct.</li>
+  		     <li>It's possible that the file was deleted by one of the owners.</li>
+  		     <li>If this is an embedded page, please ensure the src attribute is correct.</li>
+  		     <li>If this is an error with StratoSim, please <a href="mailto:support@stratosim.com" target="_blank">report</a> it.</li>
+  		  </ul>
+  		</p>
+  	</#if>
+  	<#if error403??>
+  		<h1>Access Denied</h1>
+  		<p>
+  		  We're sorry, but you do not have permission to view this file.
+  		  <ul>
+  		     <li>Please check to see that the URL is correct.</li>
+  		     <li>It's possible that the permissions were altered.</li>
+  		     <li>If this is an embedded page, please ensure the file has public viewing permissions.</li>
+  		     <li>If this is an error with StratoSim, please <a href="mailto:support@stratosim.com" target="_blank">report</a> it.</li>
+  		  </ul>
+  		</p>
+  	</#if>
+  	<#if error400??>
+  		<h1>Invalid Request</h1>
+  		<p>
+  		  We're sorry, but the URL appears to be invalid.
+  		  <ul>
+  		     <li>Please fix the URL and try again.</li>
+  		     <li>If this is an embedded page, please ensure the src attribute is correct.</li>
+  		     <li>If this is an error with StratoSim, please <a href="mailto:support@stratosim.com" target="_blank">report</a> it.</li>
+  		  </ul>
+  		</p>
+  	</#if>
+  	
+  	</div>
+  </body>
+</html>

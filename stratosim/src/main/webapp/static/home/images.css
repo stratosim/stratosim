@@ -1,0 +1,17 @@
+.sprite {
+    background: url("images.png") no-repeat top left;
+}
+
+.browser_logos{ background-position: 0 0; width: 175px; height: 75px; } 
+.embed{ background-position: 0 -125px; width: 150px; height: 81px; } 
+.files{ background-position: 0 -256px; width: 100px; height: 93px; } 
+.html5{ background-position: 0 -399px; width: 100px; height: 100px; } 
+.interface{ background-position: 0 -549px; width: 120px; height: 99px; } 
+.lock{ background-position: 0 -698px; width: 80px; height: 80px; } 
+.nglogo{ background-position: 0 -828px; width: 180px; height: 77px; } 
+.screenshot1{ background-position: 0 -955px; width: 250px; height: 136px; } 
+.screenshot2{ background-position: 0 -1141px; width: 250px; height: 136px; } 
+.screenshot3{ background-position: 0 -1327px; width: 250px; height: 136px; } 
+.share{ background-position: 0 -1513px; width: 48px; height: 48px; } 
+.sim{ background-position: 0 -1611px; width: 100px; height: 70px; } 
+

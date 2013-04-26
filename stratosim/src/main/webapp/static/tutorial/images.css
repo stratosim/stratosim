@@ -1,0 +1,35 @@
+.sprite {
+    background: url("images.png") no-repeat top left;
+}
+
+.image11{ background-position: 0 0; width: 162px; height: 176px; } 
+.image12{ background-position: 0 -226px; width: 162px; height: 176px; } 
+.image13{ background-position: 0 -452px; width: 161px; height: 175px; } 
+.image14{ background-position: 0 -677px; width: 163px; height: 176px; } 
+.image15{ background-position: 0 -903px; width: 162px; height: 176px; } 
+.image21{ background-position: 0 -1129px; width: 162px; height: 176px; } 
+.image22{ background-position: 0 -1355px; width: 162px; height: 176px; } 
+.image23{ background-position: 0 -1581px; width: 162px; height: 176px; } 
+.image31{ background-position: 0 -1807px; width: 162px; height: 176px; } 
+.image32{ background-position: -213px 0; width: 204px; height: 155px; } 
+.image33{ background-position: -213px -205px; width: 204px; height: 154px; } 
+.image41{ background-position: -213px -409px; width: 162px; height: 176px; } 
+.image42{ background-position: -213px -635px; width: 162px; height: 176px; } 
+.image43{ background-position: -213px -861px; width: 204px; height: 155px; } 
+.image51{ background-position: -213px -1066px; width: 176px; height: 176px; } 
+.image52{ background-position: -213px -1292px; width: 176px; height: 176px; } 
+.image53{ background-position: -213px -1518px; width: 162px; height: 176px; } 
+.image54{ background-position: -213px -1744px; width: 162px; height: 162px; } 
+.image55{ background-position: -467px 0; width: 162px; height: 162px; } 
+.image61{ background-position: -467px -212px; width: 204px; height: 155px; } 
+.image62{ background-position: -467px -417px; width: 204px; height: 154px; } 
+.image63{ background-position: -467px -621px; width: 204px; height: 154px; } 
+.image71{ background-position: -467px -825px; width: 162px; height: 176px; } 
+.image72{ background-position: -467px -1051px; width: 200px; height: 125px; } 
+.image81{ background-position: -467px -1226px; width: 162px; height: 176px; } 
+.image82{ background-position: -467px -1452px; width: 204px; height: 155px; } 
+.image83{ background-position: -467px -1657px; width: 156px; height: 176px; } 
+.image91{ background-position: -467px -1883px; width: 162px; height: 176px; } 
+.image92{ background-position: -721px 0; width: 162px; height: 176px; } 
+.image93{ background-position: -721px -226px; width: 162px; height: 176px; } 
+.stratoman{ background-position: -721px -452px; width: 120px; height: 122px; }  

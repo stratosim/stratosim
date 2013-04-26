@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+
+	<ui:style>
+		@external stratosim-BetterTextBox;
+		.stratosim-BetterTextBox {
+			background-color: white;
+			cursor: pointer;
+			border: 0px solid white;
+			margin: 2px 2px 2px 2px;
+		}
+
+		.stratosim-BetterTextBox:focus {
+			cursor: auto;
+			box-shadow: 1px 1px 2px #ccc;
+		}
+		
+		.stratosim-BetterTextBox-readonly:hover {
+			color: #66ccff;
+		}
+	</ui:style>
+
+	<g:TextBox ui:field="textBox" />
+
+</ui:UiBinder> 
