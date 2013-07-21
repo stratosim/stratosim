@@ -12,7 +12,7 @@
 
   <properties>
     <appengine.app.version>{{ app_version }}</appengine.app.version>
-    <appengine.target.version>1.7.6</appengine.target.version>
+    <appengine.target.version>1.8.2</appengine.target.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- GWT version -->
@@ -107,12 +107,12 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>14.0-rc1</version>
+      <version>14.0.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava-gwt</artifactId>
-      <version>14.0-rc1</version>
+      <version>14.0.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.protobuf</groupId>
